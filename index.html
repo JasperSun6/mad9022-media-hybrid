@@ -11,46 +11,61 @@
 </head>
 
 <body>
-
     <header>sun00120</header>
     <main>
         <section id="player-area">
-            <button id="skip_previous" class="buttons">
-                <span class="material-icons">
-                    skip_previous
-                </span>
-            </button>
-            <button id="replay_10" class="buttons">
-                <span class="material-icons">
-                    replay_10
-                </span>
-            </button>
-            <button id="btnPlay" class="buttons">
-                <span class="material-icons">play_arrow</span>
-            </button>
-            <button id="pause" class="buttons">
-                <span class="material-icons">
-                    pause
-                </span>
-            </button>
-            <button id="stop" class="buttons">
-                <span class="material-icons">
-                    stop
-                </span>
-            </button>
-            <button id="forward_10" class="buttons">
-                <span class="material-icons">
-                    forward_10
-                </span>
-            </button>
-            <button id="skip_next" class="buttons">
-                <span class="material-icons">
-                    skip_next
-                </span>
-            </button>
+            <audio id="song-player" controls>
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+            <div id="player" class="is-playing">
+                <div id="visual">
+                    <img src="./media/thumbnail.jpg" alt="track name" />
+                    <div id="audio-animation"></div>
+                </div>
+                <div>
+                    <time id="current-time">00:00</time>
+                    <input type="range"></input>
+                    <time id="total-time">00:00</time>
+                </div>
+                <div id="controls">
+                    <button id="skip_previous" class="buttons">
+                        <span class="material-icons">
+                            skip_previous
+                        </span>
+                    </button>
+                    <button id="replay_10" class="buttons">
+                        <span class="material-icons">
+                            replay_10
+                        </span>
+                    </button>
+                    <button id="btnPlay" class="buttons">
+                        <span class="material-icons">play_arrow</span>
+                    </button>
+                    <button id="pause" class="buttons">
+                        <span class="material-icons">
+                            pause
+                        </span>
+                    </button>
+                    <button id="stop" class="buttons">
+                        <span class="material-icons">
+                            stop
+                        </span>
+                    </button>
+                    <button id="forward_10" class="buttons">
+                        <span class="material-icons">
+                            forward_10
+                        </span>
+                    </button>
+                    <button id="skip_next" class="buttons">
+                        <span class="material-icons">
+                            skip_next
+                        </span>
+                    </button>
+                </div>
+            </div>
         </section>
         <section id="playerlist-area">
-
         </section>
     </main>
 </body>
