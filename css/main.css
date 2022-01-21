@@ -1,17 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+html {
+  background-color: #393838;
+}
+
 main {
   text-align: center;
 }
 header {
   text-align: center;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #d5d4cf;
+  font-family: "Mochiy Pop P One", sans-serif;
+  margin: 2rem 0;
+}
+
+#player-area {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 #song-player {
   display: none;
 }
 
-#controls {
-  margin-top: 2rem;
+#visual img {
+  text-align: center;
+  width: 100%;
+}
+
+/* song title and artist name */
+#title {
+  color: #d5d4cf;
+  text-align: left;
+  font-family: "Ubuntu", sans-serif;
+  margin: 3.5rem 0rem 1.75rem 0rem;
+}
+#song-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+#artist {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+/* time bar */
+input[type="range"] {
+  width: 100%;
+  margin: 3.5px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #d5d4cf;
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  margin-top: -3.5px;
+  width: 13px;
+  height: 13px;
+  background: #d5d4cf;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 40px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #e1e0dd;
+}
+input[type="range"]::-moz-range-track {
+  background: #d5d4cf;
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  background: #d5d4cf;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 40px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 4.5px 0;
+  color: transparent;
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #c9c8c1;
+  border: 0;
+  border-radius: 20px;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #d5d4cf;
+  border: 0;
+  border-radius: 20px;
+}
+input[type="range"]::-ms-thumb {
+  width: 13px;
+  height: 13px;
+  background: #d5d4cf;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #d5d4cf;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #e1e0dd;
+}
+
+/* song current and total timeline */
+#time {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  color: #d5d4cf;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* control buttons */
+#controls {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* button style */
+.buttons {
+  border: none;
+  padding: 0;
+  color: #d5d4cf;
+  background-color: transparent;
+}
+
+/* playlist */
+#playerList-area {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#list-title {
+  color: #d5d4cf;
+  text-align: left;
+  font-size: 1.5rem;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #d5d4cf;
+}
+
+/* song list */
+#songList {
+  padding: 0rem;
+}
+#songList li {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin-bottom: 0.75rem;
+}
+#songList-text {
+  color: #d5d4cf;
+  text-align: left;
+  font-family: "Ubuntu", sans-serif;
 }

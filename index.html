@@ -20,13 +20,19 @@
             </audio>
             <div id="player" class="is-playing">
                 <div id="visual">
-                    <img src="./media/thumbnail.jpg" alt="track name" />
+                    <img src="/media/img/twice500.jpeg" alt="track name" />
                     <div id="audio-animation"></div>
                 </div>
-                <div>
-                    <time id="current-time">00:00</time>
-                    <input type="range"></input>
-                    <time id="total-time">00:00</time>
+                <div id="title">
+                    <p id="song-title">The Feels</p>
+                    <p id="artist">Twice</p>
+                </div>
+                <div id="timer">
+                    <input type="range" value="0" min="" max=""></input>
+                    <div id="time">
+                        <time id="current-time">00:00</time>
+                        <time id="total-time">03:18</time>
+                    </div>
                 </div>
                 <div id="controls">
                     <button id="skip_previous" class="buttons">
@@ -65,7 +71,70 @@
                 </div>
             </div>
         </section>
-        <section id="playerlist-area">
+        <section id="playerList-area">
+            <p id="list-title">Playlist</p>
+            <ul id="songList">
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/itzy75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">WANNABE</p>
+                        <p id="songList-artist">ITZY</p>
+                    </div>
+                </li>
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/lisa75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">MONEY</p>
+                        <p id="songList-artist">LISA</p>
+                    </div>
+                </li>
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/blackpink75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">DDU-DU DDU-DU</p>
+                        <p id="songList-artist">BLACKPINK</p>
+                    </div>
+                </li>
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/iu75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">LILAC</p>
+                        <p id="songList-artist">IU</p>
+                    </div>
+                </li>
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/bts75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">Butter</p>
+                        <p id="songList-artist">BTS</p>
+                    </div>
+                </li>
+                <li>
+                    <div id="songList-cover">
+                        <img src="/media/img/twice75.jpeg" alt="track name" />
+                        <div id="audio-animation"></div>
+                    </div>
+                    <div id="songList-text">
+                        <p id="songList-title">The Feels</p>
+                        <p id="songList-artist">Twice</p>
+                    </div>
+                </li>
+            </ul>
         </section>
     </main>
 </body>
