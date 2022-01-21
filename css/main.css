@@ -26,9 +26,15 @@ header {
   display: none;
 }
 
-#visual img {
+#track-cover img {
   text-align: center;
   width: 100%;
+}
+
+#visual {
+  color: #d5d4cf;
+  font-size: 1.25rem;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /* song title and artist name */
@@ -155,7 +161,6 @@ input[type="range"]:focus::-ms-fill-upper {
   color: #d5d4cf;
   background-color: transparent;
 }
-
 /* playlist */
 #playerList-area {
   margin-left: 1.25rem;

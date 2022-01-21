@@ -11,7 +11,9 @@
 </head>
 
 <body>
-    <header>sun00120</header>
+    <header>
+        <h1>sun00120</h1>
+    </header>
     <main>
         <section id="player-area">
             <audio id="song-player" controls>
@@ -19,9 +21,9 @@
                 <code>audio</code> element.
             </audio>
             <div id="player" class="is-playing">
+                <div id="track-cover"> <img src="/media/img/TWICE-The Feels.jpeg" alt="track name" /></div>
                 <div id="visual">
-                    <img src="/media/img/TWICE-The Feels.jpeg" alt="track name" />
-                    <div id="audio-animation"></div>
+                    <p>The visualizer goes here</p>
                 </div>
                 <div id="title">
                     <p id="song-title">The Feels</p>
@@ -73,11 +75,10 @@
         </section>
         <section id="playerList-area">
             <p id="list-title">Playlist</p>
-            <ul id="songList">
+            <ol id="songList">
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/ITZY-WANNABE.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">WANNABE</p>
@@ -87,7 +88,6 @@
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/LISA-MONEY.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">MONEY</p>
@@ -97,7 +97,6 @@
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/BLACKPINK-DDU-DU DDU-DU.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">DDU-DU DDU-DU</p>
@@ -107,7 +106,6 @@
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/IU-LILAC.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">LILAC</p>
@@ -117,7 +115,6 @@
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/BTS-Butter.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">Butter</p>
@@ -127,14 +124,13 @@
                 <li class="active">
                     <div id="songList-cover">
                         <img src="/media/img/TWICE-The Feels.jpeg" alt="track name" />
-                        <div id="audio-animation"></div>
                     </div>
                     <div id="songList-text">
                         <p id="songList-title">The Feels</p>
                         <p id="songList-artist">Twice</p>
                     </div>
                 </li>
-            </ul>
+            </ol>
         </section>
     </main>
 </body>
