@@ -179,8 +179,26 @@ input[type="range"]:focus::-ms-fill-upper {
   list-style: none;
   margin-bottom: 0.75rem;
 }
+/* list hover for cursor user */
+#songList li:hover {
+  background-color: #4f4f4f;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+#songList-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #songList-text {
   color: #d5d4cf;
   text-align: left;
   font-family: "Ubuntu", sans-serif;
+}
+#songList-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+#songList-artist {
+  color: #c8c6b3;
 }
