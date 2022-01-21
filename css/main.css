@@ -16,9 +16,10 @@ header {
   margin: 2rem 0;
 }
 
+/* Mobile - 360px */
 #player-area {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 #song-player {
@@ -157,13 +158,14 @@ input[type="range"]:focus::-ms-fill-upper {
 
 /* playlist */
 #playerList-area {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 #list-title {
   color: #d5d4cf;
   text-align: left;
   font-size: 1.5rem;
+  text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;
   margin-bottom: 2rem;
   border-bottom: 1px solid #d5d4cf;
@@ -175,13 +177,15 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 #songList li {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
   list-style: none;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #d5d4cf;
 }
-/* list hover for cursor user */
+
+/* list hover */
 #songList li:hover {
-  background-color: #4f4f4f;
+  background-color: #6f6b6b;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
@@ -190,9 +194,15 @@ input[type="range"]:focus::-ms-fill-upper {
   justify-content: center;
   align-items: center;
 }
+#songList-cover img {
+  width: 6rem;
+  max-width: 100%;
+}
+
 #songList-text {
+  margin-right: 0.75rem;
   color: #d5d4cf;
-  text-align: left;
+  text-align: right;
   font-family: "Ubuntu", sans-serif;
 }
 #songList-title {
@@ -201,4 +211,59 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 #songList-artist {
   color: #c8c6b3;
+}
+
+/* Medium web browser - 600px */
+@media only screen and (min-width: 37.5rem) {
+  main {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #player-area {
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+    width: 100%;
+  }
+
+  #playerList-area {
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+    width: 100%;
+  }
+
+  #songList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  #songList li {
+    margin-bottom: 1.75rem;
+  }
+
+  #list-title {
+    margin-top: 0;
+  }
+
+  #songList-title {
+    font-size: 1rem;
+  }
+}
+
+/* Large web browser - 960px */
+@media only screen and (min-width: 60rem) {
+  #player-area {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  #playerList-area {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  #songList li {
+    margin-bottom: 2rem;
+  }
 }
