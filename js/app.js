@@ -37,8 +37,12 @@ const APP = {
     APP.audio.currentTime = 0;
   },
 
-  covertTime: (second) => {
-    return (second - (second %= 60)) / 60 + (9 < second ? ":" : ":0") + second;
+  //Code learned from slackoverflow - credit GitaarLAB
+  //https://stackoverflow.com/questions/3733227/javascript-seconds-to-minutes-and-seconds
+  covertTime: (seconds) => {
+    return (
+      (seconds - (seconds %= 60)) / 60 + (9 < seconds ? ":" : ":0") + seconds
+    );
   },
 
   updateTotalTime: (ev) => {
