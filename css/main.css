@@ -23,7 +23,7 @@ header {
   margin-right: 1.25rem;
 }
 
-#song-player {
+#audio-player {
   display: none;
 }
 
@@ -38,8 +38,7 @@ header {
   max-width: 50%;
   text-align: center;
 }
-
-/* visualizer border */
+/* visualizer border  */
 #Layer_1 {
   border-bottom: 1px groove #d5d4cf;
 }
@@ -222,8 +221,9 @@ input[type="range"]:focus::-ms-fill-upper {
   margin-right: 1.25rem;
 }
 
+/* hightLight the song */
 .active {
-  background-color: #605f5f;
+  background-color: #6f6b6b;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
