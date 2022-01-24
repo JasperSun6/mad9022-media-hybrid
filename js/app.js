@@ -2,11 +2,7 @@ const INIT = {
   init: (ev) => {
     APP.audio.src = SONGS[APP.currentTrack].src;
 
-    let play = document.getElementById("btnPlay");
-    play.addEventListener("click", APP.startPlay);
-
-    let pause = document.getElementById("pause");
-    pause.addEventListener("click", APP.pausePlay);
+    APP.play.addEventListener("click", APP.startPlay);
 
     let stop = document.getElementById("stop");
     stop.addEventListener("click", APP.stopPlay);
@@ -22,22 +18,45 @@ const APP = {
   player: document.getElementById("player"),
   totalTime: document.getElementById("total-time"),
   currentTime: document.getElementById("current-time"),
+  play: document.getElementById("btnPlay"),
 
+  // play song
   startPlay: (ev) => {
-    if (!APP.audio.paused) return;
-    console.log("Song is playing");
     APP.audio.play();
+    APP.updateToPause();
   },
 
+  // update button to pause button
+  updateToPause: () => {
+    APP.play.removeEventListener("click", APP.startPlay);
+    APP.play.id = "pause";
+    APP.play.innerHTML = "pause";
+    let pause = document.getElementById("pause");
+    pause.addEventListener("click", APP.pausePlay);
+    console.log("change to pause button!");
+  },
+
+  // pause song
   pausePlay: (ev) => {
-    console.log("Song is paused");
     APP.audio.pause();
+    APP.updateToPlay();
   },
 
+  // update button to play button
+  updateToPlay: () => {
+    let pause = document.getElementById("pause");
+    pause.removeEventListener("click", APP.pausePlay);
+    APP.play.id = "btnPlay";
+    APP.play.innerHTML = "play_arrow";
+    APP.play.addEventListener("click", APP.startPlay);
+    console.log("change to play button!");
+  },
+
+  // stop playing
   stopPlay: (ev) => {
-    console.log("Song is stopped");
     APP.audio.pause();
     APP.audio.currentTime = 0;
+    APP.updateToPlay();
   },
 
   //Code learned from slackoverflow - credit GitaarLAB
@@ -49,16 +68,12 @@ const APP = {
   },
 
   updateTotalTime: (ev) => {
-    console.log("Total time updated");
     APP.totalTime.innerHTML = APP.covertTime(parseInt(APP.audio.duration));
   },
 
   updateCurrentTime: (ev) => {
-    console.log("Current time updated");
     APP.currentTime.innerHTML = APP.covertTime(parseInt(APP.audio.currentTime));
   },
-
-  updateSong: (ev) => {},
 };
 
 document.addEventListener("DOMContentLoaded", INIT.init);
