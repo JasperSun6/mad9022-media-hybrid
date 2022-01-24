@@ -6,6 +6,10 @@ const INIT = {
 
     APP.play.addEventListener("click", APP.startPlay);
     APP.stop.addEventListener("click", APP.stopPlay);
+    APP.previous.addEventListener("click", APP.perviousPlay);
+    APP.next.addEventListener("click", APP.nextPlay);
+    APP.back10.addEventListener("click", APP.backTenSec);
+    APP.forward10.addEventListener("click", APP.forwardTenSec);
 
     APP.audio.addEventListener("durationchange", TIME.updateTotalTime);
     APP.audio.addEventListener("timeupdate", TIME.updateCurrentTime);
@@ -20,6 +24,10 @@ const APP = {
   currentTrack: 0,
   play: document.getElementById("btnPlay"),
   stop: document.getElementById("stop"),
+  previous: document.getElementById("skip_previous"),
+  next: document.getElementById("skip_next"),
+  back10: document.getElementById("replay_10"),
+  forward10: document.getElementById("forward_10"),
   audio: document.getElementById("audio-player"),
   player: document.getElementById("player"),
   totalTime: document.getElementById("total-time"),
@@ -43,6 +51,39 @@ const APP = {
     APP.audio.currentTime = 0;
     APP.updateToPlay();
     ANIMATION.stopAnimation();
+  },
+
+  // play next song
+  nextPlay: (ev) => {
+    APP.audio.pause();
+    APP.audio.currentTime = 0;
+    ANIMATION.stopAnimation();
+    let len = SONGS.length; //get length of array
+    APP.currentTrack++; //increment the currentTrack number
+    if (APP.currentTrack >= len) {
+      //if the current track number is greater than or equal to the length
+      APP.currentTrack = 0;
+    }
+  },
+  // play last song
+  perviousPlay: (ev) => {
+    APP.audio.pause();
+    APP.audio.currentTime = 0;
+    ANIMATION.stopAnimation();
+    let len = SONGS.length;
+    APP.currentTrack--;
+    if (APP.currentTrack <= len) {
+      APP.currentTrack = 0;
+    }
+  },
+
+  // play back 10 seconds
+  backTenSec: (ev) => {
+    APP.audio.currentTime = APP.audio.currentTime - 10;
+  },
+  // play forward 10 seconds
+  forwardTenSec: (ev) => {
+    APP.audio.currentTime = APP.audio.currentTime + 10;
   },
 
   // update button to play button
