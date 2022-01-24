@@ -1,4 +1,5 @@
 const INIT = {
+  songs: document.querySelectorAll(".song"),
   init: (ev) => {
     APP.audio.src = SONGS[APP.currentTrack].src;
 
@@ -9,6 +10,10 @@ const INIT = {
 
     APP.audio.addEventListener("durationchange", APP.updateTotalTime);
     APP.audio.addEventListener("timeupdate", APP.updateCurrentTime);
+
+    INIT.songs.forEach((song) => {
+      song.addEventListener("click", APP.songSelected);
+    });
   },
 };
 
@@ -73,6 +78,15 @@ const APP = {
 
   updateCurrentTime: (ev) => {
     APP.currentTime.innerHTML = APP.covertTime(parseInt(APP.audio.currentTime));
+  },
+
+  // highlight the song that clicked
+  songSelected: (ev) => {
+    let listItems = ev.target.closest(".song");
+    INIT.songs.forEach((song) => {
+      song.classList.remove("active");
+    });
+    listItems.classList.add("active");
   },
 };
 

@@ -214,11 +214,18 @@ input[type="range"]:focus::-ms-fill-upper {
   color: #d5d4cf;
   background-color: transparent;
 }
+
 /* playlist */
 #playerList-area {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 }
+
+.active {
+  background-color: #6f6b6b;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
 #list-title {
   color: #d5d4cf;
   text-align: left;
@@ -240,12 +247,6 @@ input[type="range"]:focus::-ms-fill-upper {
   list-style: none;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid #d5d4cf;
-}
-
-/* list hover */
-#songList li:hover {
-  background-color: #6f6b6b;
-  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 #songList-cover {
@@ -299,6 +300,12 @@ input[type="range"]:focus::-ms-fill-upper {
 
   #songList li {
     margin-bottom: 1.75rem;
+  }
+
+  /* list hover */
+  #songList li:hover {
+    background-color: #6f6b6b;
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   #list-title {
