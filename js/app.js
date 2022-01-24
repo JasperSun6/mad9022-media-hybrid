@@ -1,10 +1,4 @@
-const APP = {
-  currentTrack: 5,
-  audio: document.getElementById("song-player"),
-  player: document.getElementById("player"),
-  totalTime: document.getElementById("total-time"),
-  currentTime: document.getElementById("current-time"),
-
+const INIT = {
   init: (ev) => {
     APP.audio.src = SONGS[APP.currentTrack].src;
 
@@ -20,6 +14,15 @@ const APP = {
     APP.audio.addEventListener("durationchange", APP.updateTotalTime);
     APP.audio.addEventListener("timeupdate", APP.updateCurrentTime);
   },
+};
+
+const APP = {
+  currentTrack: 0,
+  audio: document.getElementById("song-player"),
+  player: document.getElementById("player"),
+  totalTime: document.getElementById("total-time"),
+  currentTime: document.getElementById("current-time"),
+
   startPlay: (ev) => {
     if (!APP.audio.paused) return;
     console.log("Song is playing");
@@ -54,6 +57,8 @@ const APP = {
     console.log("Current time updated");
     APP.currentTime.innerHTML = APP.covertTime(parseInt(APP.audio.currentTime));
   },
+
+  updateSong: (ev) => {},
 };
 
-document.addEventListener("DOMContentLoaded", APP.init);
+document.addEventListener("DOMContentLoaded", INIT.init);

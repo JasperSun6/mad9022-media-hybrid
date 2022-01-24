@@ -8,6 +8,7 @@ html {
 main {
   text-align: center;
 }
+
 header {
   text-align: center;
   font-size: 1.5rem;
@@ -28,13 +29,14 @@ header {
 
 #track-cover img {
   text-align: center;
-  width: 100%;
+  max-width: 80%;
 }
 
-#visual {
-  color: #d5d4cf;
-  font-size: 1.25rem;
-  font-family: "Ubuntu", sans-serif;
+/* visualizer bar */
+#visual svg {
+  fill: #d5d4cf;
+  max-width: 50%;
+  text-align: center;
 }
 
 /* song title and artist name */
@@ -180,6 +182,7 @@ input[type="range"]:focus::-ms-fill-upper {
 #songList {
   padding: 0rem;
 }
+
 #songList li {
   display: flex;
   justify-content: space-between;
@@ -266,6 +269,7 @@ input[type="range"]:focus::-ms-fill-upper {
   #playerList-area {
     margin-left: 3rem;
     margin-right: 3rem;
+    max-width: 70%;
   }
 
   #songList li {
