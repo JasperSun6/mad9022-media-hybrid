@@ -45,7 +45,7 @@ const APP = {
   pausePlay: (ev) => {
     APP.audio.pause();
     APP.updateToPlay();
-    APP.stopAnimation();
+    APP.pauseAnimation();
   },
 
   // update button to play button
@@ -95,6 +95,13 @@ const APP = {
     for (let i = 1; i < 10; i++) {
       let visual = document.querySelector(`.r-${i}`);
       visual.id = `r-${i}`;
+      visual.style.animationPlayState = "running";
+    }
+  },
+  pauseAnimation: (ev) => {
+    for (let i = 1; i < 10; i++) {
+      let visual = document.querySelector(`.r-${i}`);
+      visual.style.animationPlayState = "paused";
     }
   },
   stopAnimation: (ev) => {

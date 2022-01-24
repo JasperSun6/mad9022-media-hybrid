@@ -38,9 +38,15 @@ header {
   max-width: 50%;
   text-align: center;
 }
+
+/* visualizer border */
+#Layer_1 {
+  border-bottom: 1px groove #d5d4cf;
+}
+
 /* visualizer bar animations */
 #r-1 {
-  animation: move_y 1.8s 1ms linear infinite;
+  animation: move_y 1.9s 1ms linear infinite;
 }
 #r-2 {
   animation: move_y 1.2s 1ms linear infinite;
@@ -49,43 +55,38 @@ header {
   animation: move_y 1.4s 1ms linear infinite;
 }
 #r-4 {
-  animation: move_y 1.6s 1ms linear infinite;
+  animation: move_y 1.5s 1ms linear infinite;
 }
 #r-5 {
   animation: move_y 1.8s 1ms linear infinite;
 }
 #r-6 {
-  animation: move_y 1.6s 1ms linear infinite;
+  animation: move_y 1.7s 1ms linear infinite;
 }
 #r-7 {
-  animation: move_y 1.4s 1ms linear infinite;
+  animation: move_y 1.3s 1ms linear infinite;
 }
 #r-8 {
   animation: move_y 1.2s 1ms linear infinite;
 }
 #r-9 {
-  animation: move_y 1.8s 1ms linear infinite;
+  animation: move_y 1.6s 1ms linear infinite;
 }
 
 @keyframes move_y {
   0% {
-    opacity: 0;
-    transform: translateY(0rem);
+    transform: translateY(0%);
   }
   25% {
-    opacity: 0.5;
     transform: translateY(25%);
   }
   50% {
-    opacity: 1;
     transform: translateY(50%);
   }
   75% {
-    opacity: 0.5;
     transform: translateY(25%);
   }
   100% {
-    opacity: 0;
     transform: translateY(0%);
   }
 }
@@ -222,7 +223,7 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 .active {
-  background-color: #6f6b6b;
+  background-color: #605f5f;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
