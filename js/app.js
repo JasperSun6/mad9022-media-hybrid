@@ -29,6 +29,7 @@ const APP = {
   startPlay: (ev) => {
     APP.audio.play();
     APP.updateToPause();
+    APP.playAnimation();
   },
 
   // update button to pause button
@@ -38,13 +39,13 @@ const APP = {
     APP.play.innerHTML = "pause";
     let pause = document.getElementById("pause");
     pause.addEventListener("click", APP.pausePlay);
-    console.log("change to pause button!");
   },
 
   // pause song
   pausePlay: (ev) => {
     APP.audio.pause();
     APP.updateToPlay();
+    APP.stopAnimation();
   },
 
   // update button to play button
@@ -54,7 +55,6 @@ const APP = {
     APP.play.id = "btnPlay";
     APP.play.innerHTML = "play_arrow";
     APP.play.addEventListener("click", APP.startPlay);
-    console.log("change to play button!");
   },
 
   // stop playing
@@ -62,6 +62,7 @@ const APP = {
     APP.audio.pause();
     APP.audio.currentTime = 0;
     APP.updateToPlay();
+    APP.stopAnimation();
   },
 
   //Code learned from slackoverflow - credit GitaarLAB
@@ -87,6 +88,20 @@ const APP = {
       song.classList.remove("active");
     });
     listItems.classList.add("active");
+  },
+
+  // activated / Deactivated
+  playAnimation: (ev) => {
+    for (let i = 1; i < 10; i++) {
+      let visual = document.querySelector(`.r-${i}`);
+      visual.id = `r-${i}`;
+    }
+  },
+  stopAnimation: (ev) => {
+    for (let i = 1; i < 10; i++) {
+      let visual = document.querySelector(`.r-${i}`);
+      visual.removeAttribute("id");
+    }
   },
 };
 
