@@ -55,24 +55,34 @@ const APP = {
 
   // play next song
   nextPlay: (ev) => {
-    let len = SONGS.length; //get length of array
-    APP.currentTrack++; //increment the currentTrack number
+    let len = SONGS.length;
+    APP.currentTrack++;
     if (APP.currentTrack >= len) {
-      //if the current track number is greater than or equal to the length
       APP.currentTrack = 0;
     }
     APP.audio.src = SONGS[APP.currentTrack].src;
+    document.getElementById("track-cover").src = SONGS[APP.currentTrack].img;
+    document.getElementById("song-title").textContent =
+      SONGS[APP.currentTrack].title;
+    document.getElementById("artist").textContent =
+      SONGS[APP.currentTrack].artist;
     APP.startPlay();
     console.log(APP.currentTrack);
   },
-  // play last song
+  // play pervious song
   perviousPlay: (ev) => {
     let len = SONGS.length;
-    APP.currentTrack--;
-    if (APP.currentTrack <= len) {
+    if (APP.currentTrack === 0) {
       APP.currentTrack = 0;
+    } else {
+      APP.currentTrack--;
     }
     APP.audio.src = SONGS[APP.currentTrack].src;
+    document.getElementById("track-cover").src = SONGS[APP.currentTrack].img;
+    document.getElementById("song-title").textContent =
+      SONGS[APP.currentTrack].title;
+    document.getElementById("artist").textContent =
+      SONGS[APP.currentTrack].artist;
     APP.startPlay();
     console.log(APP.currentTrack);
   },
