@@ -6,6 +6,7 @@ const INIT = {
 
     APP.play.addEventListener("click", APP.startPlay);
     APP.stop.addEventListener("click", APP.stopPlay);
+    APP.audio.addEventListener("ended", APP.stopPlay);
     APP.previous.addEventListener("click", APP.perviousPlay);
     APP.next.addEventListener("click", APP.nextPlay);
     APP.back10.addEventListener("click", APP.backTenSec);
