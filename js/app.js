@@ -66,12 +66,11 @@ const APP = {
       SONGS[APP.currentTrack].title;
     document.getElementById("artist").textContent =
       SONGS[APP.currentTrack].artist;
+    BUTTONHIGHLIGHT.buttonSelected();
     APP.startPlay();
-    console.log(APP.currentTrack);
   },
   // play pervious song
   perviousPlay: (ev) => {
-    let len = SONGS.length;
     if (APP.currentTrack === 0) {
       APP.currentTrack = 0;
     } else {
@@ -83,8 +82,8 @@ const APP = {
       SONGS[APP.currentTrack].title;
     document.getElementById("artist").textContent =
       SONGS[APP.currentTrack].artist;
+    BUTTONHIGHLIGHT.buttonSelected();
     APP.startPlay();
-    console.log(APP.currentTrack);
   },
 
   // play back 10 seconds
@@ -161,6 +160,21 @@ const HIGHLIGHT = {
     APP.updateToPlay();
     ANIMATION.stopAnimation();
     APP.startPlay();
+  },
+};
+
+const BUTTONHIGHLIGHT = {
+  // hightLight the playlist song when press back/forward button
+  buttonSelected: (ev) => {
+    let currentTrack = SONGS[APP.currentTrack].title;
+    let tracks = document.querySelectorAll(".song");
+    tracks.forEach((song) => song.classList.remove("active"));
+
+    tracks.forEach((song) => {
+      if (song.querySelector(".songList-title").textContent == currentTrack) {
+        song.classList.add("active");
+      }
+    });
   },
 };
 
