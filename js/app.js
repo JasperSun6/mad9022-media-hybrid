@@ -55,26 +55,26 @@ const APP = {
 
   // play next song
   nextPlay: (ev) => {
-    APP.audio.pause();
-    APP.audio.currentTime = 0;
-    ANIMATION.stopAnimation();
     let len = SONGS.length; //get length of array
     APP.currentTrack++; //increment the currentTrack number
     if (APP.currentTrack >= len) {
       //if the current track number is greater than or equal to the length
       APP.currentTrack = 0;
     }
+    APP.audio.src = SONGS[APP.currentTrack].src;
+    APP.startPlay();
+    console.log(APP.currentTrack);
   },
   // play last song
   perviousPlay: (ev) => {
-    APP.audio.pause();
-    APP.audio.currentTime = 0;
-    ANIMATION.stopAnimation();
     let len = SONGS.length;
     APP.currentTrack--;
     if (APP.currentTrack <= len) {
       APP.currentTrack = 0;
     }
+    APP.audio.src = SONGS[APP.currentTrack].src;
+    APP.startPlay();
+    console.log(APP.currentTrack);
   },
 
   // play back 10 seconds
@@ -133,6 +133,21 @@ const HIGHLIGHT = {
       song.classList.remove("active");
     });
     listItems.classList.add("active");
+
+    let trackName =
+      ev.currentTarget.querySelector(".songList-title").textContent;
+
+    SONGS.forEach((track) => {
+      if (track.title == trackName) {
+        document.getElementById("track-cover").src = track.img;
+        document.getElementById("song-title").textContent = track.title;
+        document.getElementById("artist").textContent = track.artist;
+        APP.audio.src = track.src;
+      }
+    });
+    APP.updateToPlay();
+    ANIMATION.stopAnimation();
+    APP.startPlay();
   },
 };
 

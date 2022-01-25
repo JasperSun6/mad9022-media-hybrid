@@ -27,7 +27,7 @@ header {
   display: none;
 }
 
-#track-cover img {
+#track-cover {
   text-align: center;
   max-width: 80%;
 }

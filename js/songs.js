@@ -8,7 +8,7 @@ const SONGS = [
   {
     title: "MONEY",
     src: "media/song/LISA-MONEY.mp3",
-    img: "media/song/LISA-MONEY.jpeg",
+    img: "media/img/LISA-MONEY.jpeg",
     artist: "LISA",
   },
   {
