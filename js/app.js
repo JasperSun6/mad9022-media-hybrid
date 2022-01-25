@@ -89,10 +89,13 @@ const APP = {
   // update button to play button
   updateToPlay: () => {
     let pause = document.getElementById("pause");
-    pause.removeEventListener("click", APP.pausePlay);
-    APP.play.id = "btnPlay";
-    APP.play.innerHTML = "play_arrow";
-    APP.play.addEventListener("click", APP.startPlay);
+    if (APP.audio.paused) {
+      APP.play.id = "btnPlay";
+      APP.play.innerHTML = "play_arrow";
+      APP.play.addEventListener("click", APP.startPlay);
+    } else {
+      pause.removeEventListener("click", APP.pausePlay);
+    }
   },
   // update button to pause button
   updateToPause: () => {
