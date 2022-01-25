@@ -152,10 +152,13 @@ const HIGHLIGHT = {
 
     SONGS.forEach((track) => {
       if (track.title == trackName) {
+        APP.currentTrack = SONGS.indexOf(track);
         document.getElementById("track-cover").src = track.img;
         document.getElementById("song-title").textContent = track.title;
         document.getElementById("artist").textContent = track.artist;
+
         APP.audio.src = track.src;
+        console.log(APP.currentTrack);
       }
     });
     APP.updateToPlay();
