@@ -9,11 +9,13 @@ const INIT = {
     APP.audio.addEventListener("ended", APP.stopPlay);
     APP.previous.addEventListener("click", APP.perviousPlay);
     APP.next.addEventListener("click", APP.nextPlay);
+    APP.audio.addEventListener("ended", APP.nextPlay);
     APP.back10.addEventListener("click", APP.backTenSec);
     APP.forward10.addEventListener("click", APP.forwardTenSec);
 
     APP.audio.addEventListener("durationchange", TIME.updateTotalTime);
     APP.audio.addEventListener("timeupdate", TIME.updateCurrentTime);
+    APP.audio.addEventListener("timeupdate", PROGRESS.progressBar);
 
     INIT.songs.forEach((song) => {
       song.addEventListener("click", HIGHLIGHT.songSelected);
@@ -33,6 +35,7 @@ const APP = {
   player: document.getElementById("player"),
   totalTime: document.getElementById("total-time"),
   currentTime: document.getElementById("current-time"),
+  progressBar: document.getElementById("progressBar"),
 
   // play song
   startPlay: (ev) => {
@@ -138,6 +141,14 @@ const TIME = {
   },
 };
 
+const PROGRESS = {
+  // progress bar
+  progressBar: (ev) => {
+    APP.progressBar.setAttribute("max", APP.audio.duration);
+    APP.progressBar.setAttribute("value", APP.audio.currentTime);
+  },
+};
+
 const HIGHLIGHT = {
   // highlight the song that clicked
   songSelected: (ev) => {
@@ -156,9 +167,7 @@ const HIGHLIGHT = {
         document.getElementById("track-cover").src = track.img;
         document.getElementById("song-title").textContent = track.title;
         document.getElementById("artist").textContent = track.artist;
-
         APP.audio.src = track.src;
-        console.log(APP.currentTrack);
       }
     });
     APP.updateToPlay();
@@ -172,8 +181,8 @@ const BUTTONHIGHLIGHT = {
   buttonSelected: (ev) => {
     let currentTrack = SONGS[APP.currentTrack].title;
     let tracks = document.querySelectorAll(".song");
-    tracks.forEach((song) => song.classList.remove("active"));
 
+    tracks.forEach((song) => song.classList.remove("active"));
     tracks.forEach((song) => {
       if (song.querySelector(".songList-title").textContent == currentTrack) {
         song.classList.add("active");
