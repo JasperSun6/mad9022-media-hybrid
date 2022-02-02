@@ -1,7 +1,9 @@
 const INIT = {
-  songs: document.querySelectorAll(".song"),
+  songs: null,
 
   init: (ev) => {
+    PLAYLIST.songList();
+    INIT.songs = document.querySelectorAll(".songList-item");
     APP.audio.src = SONGS[APP.currentTrack].src;
 
     APP.play.addEventListener("click", APP.startPlay);
@@ -120,6 +122,41 @@ const APP = {
   },
 };
 
+const PLAYLIST = {
+  songList: () => {
+    let list = document.getElementById("playerList-area");
+    let df = document.createDocumentFragment();
+    let listTitle = document.createElement("p");
+    listTitle.classList.add("list-title");
+    listTitle.innerHTML = "Playlist";
+    let ol = document.createElement("ol");
+    ol.setAttribute("id", "songList");
+    SONGS.forEach((item) => {
+      let li = document.createElement("li");
+      li.classList.add("songList-item");
+      let cover = document.createElement("div");
+      cover.classList.add("songList-cover");
+      let img = document.createElement("img");
+      img.src = item.img;
+      img.alt = `${item.title}`;
+      let text = document.createElement("div");
+      text.classList.add("songList-text");
+      let title = document.createElement("p");
+      title.classList.add("songList-title");
+      title.innerHTML = item.title;
+      let artist = document.createElement("p");
+      artist.classList.add("songList-artist");
+      artist.innerHTML = item.artist;
+      text.append(title, artist);
+      cover.append(img);
+      li.append(cover, text);
+      ol.append(li);
+    });
+    df.append(listTitle, ol);
+    list.append(df);
+  },
+};
+
 const TIME = {
   //https://stackoverflow.com/questions/3733227/javascript-seconds-to-minutes-and-seconds
   //Code learned from slackoverflow - credit to GitaarLAB
@@ -152,7 +189,7 @@ const PROGRESS = {
 const HIGHLIGHT = {
   // highlight the song that clicked
   songSelected: (ev) => {
-    let listItems = ev.target.closest(".song");
+    let listItems = ev.target.closest(".songList-item");
     INIT.songs.forEach((song) => {
       song.classList.remove("active");
     });
@@ -180,7 +217,7 @@ const BUTTONHIGHLIGHT = {
   // hightLight the playlist song when press back/forward button
   buttonSelected: (ev) => {
     let currentTrack = SONGS[APP.currentTrack].title;
-    let tracks = document.querySelectorAll(".song");
+    let tracks = document.querySelectorAll(".songList-item");
 
     tracks.forEach((song) => song.classList.remove("active"));
     tracks.forEach((song) => {

@@ -149,12 +149,13 @@ header {
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
-#list-title {
+.list-title {
   color: #d5d4cf;
   text-align: left;
   font-size: 1.5rem;
   text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;
+  margin-top: 0;
   margin-bottom: 2rem;
   border-bottom: 1px solid #d5d4cf;
 }
@@ -172,27 +173,27 @@ header {
   border-bottom: 1px solid #d5d4cf;
 }
 
-#songList-cover {
+.songList-cover {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#songList-cover img {
+.songList-cover img {
   width: 6rem;
   max-width: 100%;
 }
 
-#songList-text {
+.songList-text {
   margin-right: 0.75rem;
   color: #d5d4cf;
   text-align: right;
   font-family: "Ubuntu", sans-serif;
 }
-#songList-title {
+.songList-title {
   font-size: 1rem;
   font-weight: bold;
 }
-#songList-artist {
+.songList-artist {
   color: #c8c6b3;
 }
 
@@ -235,7 +236,7 @@ header {
     margin-top: 0;
   }
 
-  #songList-title {
+  .songList-title {
     font-size: 1rem;
   }
 }
