@@ -131,8 +131,11 @@ const PLAYLIST = {
     listTitle.innerHTML = "Playlist";
     let ol = document.createElement("ol");
     ol.setAttribute("id", "songList");
-    SONGS.forEach((item) => {
+    SONGS.forEach((item, index) => {
       let li = document.createElement("li");
+      if (index === 0) {
+        li.classList.add("active");
+      }
       li.classList.add("songList-item");
       let cover = document.createElement("div");
       cover.classList.add("songList-cover");
