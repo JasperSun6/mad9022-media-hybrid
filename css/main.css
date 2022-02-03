@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 html {
-  background-color: #393838;
+  background-color: #3e5879;
 }
 
 main {
@@ -12,7 +12,7 @@ main {
 header {
   text-align: center;
   font-size: 1.5rem;
-  color: #d5d4cf;
+  color: #ededec;
   font-family: "Mochiy Pop P One", sans-serif;
   margin: 2rem 0;
 }
@@ -30,12 +30,12 @@ header {
 #track-cover {
   text-align: center;
   max-width: 80%;
-  box-shadow: 0 0 1.5rem #a9a9a9;
+  box-shadow: 0 0 1.5rem #ededec;
 }
 
 /* visualizer bar */
 #visual svg {
-  fill: #d5d4cf;
+  fill: #ededec;
   max-width: 50%;
   text-align: center;
 }
@@ -93,7 +93,7 @@ header {
 
 /* song title and artist name */
 #title {
-  color: #d5d4cf;
+  color: #ededec;
   text-align: left;
   font-family: "Ubuntu", sans-serif;
   margin: 3.5rem 0rem 1.75rem 0rem;
@@ -117,7 +117,7 @@ header {
 #time {
   display: flex;
   justify-content: space-between;
-  color: #d5d4cf;
+  color: #ededec;
   font-size: 0.75rem;
   margin-top: 0.5rem;
 }
@@ -134,7 +134,7 @@ header {
 .buttons {
   border: none;
   padding: 0;
-  color: #d5d4cf;
+  color: #e8e7e2;
   background-color: transparent;
 }
 
@@ -146,19 +146,19 @@ header {
 
 /* hightLight the song */
 .active {
-  background-color: #6f6b6b;
+  background-color: #475e6a;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .list-title {
-  color: #d5d4cf;
+  color: #ededec;
   text-align: left;
   font-size: 1.5rem;
   text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;
   margin-top: 0;
   margin-bottom: 2rem;
-  border-bottom: 1px solid #d5d4cf;
+  border-bottom: 1px solid #ededec;
 }
 
 /* song list */
@@ -171,7 +171,7 @@ header {
   justify-content: space-between;
   list-style: none;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid #d5d4cf;
+  border-bottom: 1px solid #ededec;
 }
 
 .songList-cover {
@@ -186,7 +186,7 @@ header {
 
 .songList-text {
   margin-right: 0.75rem;
-  color: #d5d4cf;
+  color: #e8e7e2;
   text-align: right;
   font-family: "Ubuntu", sans-serif;
 }
@@ -195,7 +195,7 @@ header {
   font-weight: bold;
 }
 .songList-artist {
-  color: #c8c6b3;
+  color: #ededec;
 }
 
 /* Medium web browser - 600px */
@@ -229,8 +229,8 @@ header {
 
   /* list hover */
   #songList li:hover {
-    background-color: #6f6b6b;
-    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: #617080;
+    border-radius: 0 0.8rem 0.8rem 0;
   }
 
   #list-title {
