@@ -2,23 +2,33 @@ const INIT = {
   songs: null,
 
   init: (ev) => {
+    //generate the playlist
     PLAYLIST.songList();
+
     INIT.songs = document.querySelectorAll(".songList-item");
+
     APP.audio.src = SONGS[APP.currentTrack].src;
 
+    // play and pause buttons listeners
     APP.play.addEventListener("click", APP.startPlay);
     APP.stop.addEventListener("click", APP.stopPlay);
-    APP.audio.addEventListener("ended", APP.stopPlay);
+
+    // previous and next buttons listeners
     APP.previous.addEventListener("click", APP.perviousPlay);
     APP.next.addEventListener("click", APP.nextPlay);
-    APP.audio.addEventListener("ended", APP.nextPlay);
+
+    // back 10 seconds and forward 10 seconds buttons listeners
     APP.back10.addEventListener("click", APP.backTenSec);
     APP.forward10.addEventListener("click", APP.forwardTenSec);
 
-    APP.audio.addEventListener("durationchange", TIME.updateTotalTime);
-    APP.audio.addEventListener("timeupdate", TIME.updateCurrentTime);
-    APP.audio.addEventListener("timeupdate", PROGRESS.progressBar);
+    // automatically play to next track when current track is ended
+    APP.audio.addEventListener("ended", APP.nextPlay);
 
+    APP.audio.addEventListener("timeupdate", PROGRESS.progressBar);
+    APP.audio.addEventListener("timeupdate", TIME.updateCurrentTime);
+    APP.audio.addEventListener("durationchange", TIME.updateTotalTime);
+
+    // when the track clicked, add highlight
     INIT.songs.forEach((song) => {
       song.addEventListener("click", HIGHLIGHT.songSelected);
     });
@@ -27,31 +37,37 @@ const INIT = {
 
 const APP = {
   currentTrack: 0,
+
+  player: document.getElementById("player"),
+  audio: document.getElementById("audio-player"),
+
   play: document.getElementById("btnPlay"),
   stop: document.getElementById("stop"),
+
   previous: document.getElementById("skip_previous"),
   next: document.getElementById("skip_next"),
+
   back10: document.getElementById("replay_10"),
   forward10: document.getElementById("forward_10"),
-  audio: document.getElementById("audio-player"),
-  player: document.getElementById("player"),
-  totalTime: document.getElementById("total-time"),
-  currentTime: document.getElementById("current-time"),
+
   progressBar: document.getElementById("progressBar"),
 
-  // play song
+  totalTime: document.getElementById("total-time"),
+  currentTime: document.getElementById("current-time"),
+
+  // play track
   startPlay: (ev) => {
     APP.audio.play();
     APP.updateToPause();
     ANIMATION.playAnimation();
   },
-  // pause song
+  // pause track
   pausePlay: (ev) => {
     APP.audio.pause();
     APP.updateToPlay();
     ANIMATION.pauseAnimation();
   },
-  // stop playing
+  // stop track
   stopPlay: (ev) => {
     APP.audio.pause();
     APP.audio.currentTime = 0;
@@ -59,7 +75,16 @@ const APP = {
     ANIMATION.stopAnimation();
   },
 
-  // play next song
+  //current track's time back 10 seconds
+  backTenSec: (ev) => {
+    APP.audio.currentTime = APP.audio.currentTime - 10;
+  },
+  //current track's time forward 10 seconds
+  forwardTenSec: (ev) => {
+    APP.audio.currentTime = APP.audio.currentTime + 10;
+  },
+
+  // play next track
   nextPlay: (ev) => {
     let len = SONGS.length;
     APP.currentTrack++;
@@ -75,7 +100,7 @@ const APP = {
     BUTTONHIGHLIGHT.buttonSelected();
     APP.startPlay();
   },
-  // play pervious song
+  // play pervious track
   perviousPlay: (ev) => {
     if (APP.currentTrack === 0) {
       APP.currentTrack = 0;
@@ -92,16 +117,7 @@ const APP = {
     APP.startPlay();
   },
 
-  // play back 10 seconds
-  backTenSec: (ev) => {
-    APP.audio.currentTime = APP.audio.currentTime - 10;
-  },
-  // play forward 10 seconds
-  forwardTenSec: (ev) => {
-    APP.audio.currentTime = APP.audio.currentTime + 10;
-  },
-
-  // update button to play button
+  // update to play button
   updateToPlay: () => {
     let pause = document.getElementById("pause");
     if (APP.audio.paused) {
@@ -112,7 +128,7 @@ const APP = {
       pause.removeEventListener("click", APP.pausePlay);
     }
   },
-  // update button to pause button
+  // update to pause button
   updateToPause: () => {
     APP.play.removeEventListener("click", APP.startPlay);
     APP.play.id = "pause";
@@ -123,6 +139,7 @@ const APP = {
 };
 
 const PLAYLIST = {
+  // build the player list
   songList: () => {
     let list = document.getElementById("playerList-area");
     let df = document.createDocumentFragment();
@@ -160,6 +177,14 @@ const PLAYLIST = {
   },
 };
 
+const PROGRESS = {
+  // player progress bar
+  progressBar: (ev) => {
+    APP.progressBar.setAttribute("max", APP.audio.duration);
+    APP.progressBar.setAttribute("value", APP.audio.currentTime);
+  },
+};
+
 const TIME = {
   //https://stackoverflow.com/questions/3733227/javascript-seconds-to-minutes-and-seconds
   //Code learned from slackoverflow - credit to GitaarLAB
@@ -169,28 +194,20 @@ const TIME = {
       (seconds - (seconds %= 60)) / 60 + (9 < seconds ? ":" : ":0") + seconds
     );
   },
-  // update track's currentTime
+  // update track's current time
   updateCurrentTime: (ev) => {
     APP.currentTime.innerHTML = TIME.covertTime(
       parseInt(APP.audio.currentTime)
     );
   },
-  //update track's totalTime
+  //update track's total time
   updateTotalTime: (ev) => {
     APP.totalTime.innerHTML = TIME.covertTime(parseInt(APP.audio.duration));
   },
 };
 
-const PROGRESS = {
-  // progress bar
-  progressBar: (ev) => {
-    APP.progressBar.setAttribute("max", APP.audio.duration);
-    APP.progressBar.setAttribute("value", APP.audio.currentTime);
-  },
-};
-
 const HIGHLIGHT = {
-  // highlight the song that clicked
+  // highlight the song that clicked from the playlist
   songSelected: (ev) => {
     let listItems = ev.target.closest(".songList-item");
     INIT.songs.forEach((song) => {
@@ -217,12 +234,13 @@ const HIGHLIGHT = {
 };
 
 const BUTTONHIGHLIGHT = {
-  // hightLight the playlist song when press back/forward button
+  // hightLight the playlist song when press back/forward buttons
   buttonSelected: (ev) => {
     let currentTrack = SONGS[APP.currentTrack].title;
     let tracks = document.querySelectorAll(".songList-item");
-
+    // remove the hightLight from previous song
     tracks.forEach((song) => song.classList.remove("active"));
+    //add the hightLight to current song
     tracks.forEach((song) => {
       if (song.querySelector(".songList-title").textContent == currentTrack) {
         song.classList.add("active");
