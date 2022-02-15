@@ -20,14 +20,12 @@ const INIT = {
     APP.audio.addEventListener("durationchange", TIME.updateTotalTime);
 
     // when the track clicked, add highlight
-    INIT.songs.forEach((song) => {
-      song.addEventListener("click", HIGHLIGHT.songSelected);
-    });
+    let songList = document.getElementById("songList");
+    songList.addEventListener("click", HIGHLIGHT.songSelected);
   },
 
   buttonsSwitchListeners: (ev) => {
     let target = ev.target.id;
-    console.log(target);
     switch (target) {
       case "btnPlay":
         APP.startPlay();
@@ -222,13 +220,13 @@ const HIGHLIGHT = {
   // highlight the song that clicked from the playlist
   songSelected: (ev) => {
     let listItems = ev.target.closest(".songList-item");
+    console.log(listItems);
     INIT.songs.forEach((song) => {
       song.classList.remove("active");
     });
     listItems.classList.add("active");
 
-    let trackName =
-      ev.currentTarget.querySelector(".songList-title").textContent;
+    let trackName = listItems.querySelector(".songList-title").textContent;
 
     SONGS.forEach((track) => {
       if (track.title == trackName) {
