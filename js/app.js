@@ -1,25 +1,16 @@
 const INIT = {
   songs: null,
 
-  init: (ev) => {
+  init: () => {
     //generate the playlist
     PLAYLIST.songList();
+
+    let buttons = document.getElementById("controls");
+    buttons.addEventListener("click", INIT.buttonsSwitchListeners);
 
     INIT.songs = document.querySelectorAll(".songList-item");
 
     APP.audio.src = SONGS[APP.currentTrack].src;
-
-    // play and pause buttons listeners
-    APP.play.addEventListener("click", APP.startPlay);
-    APP.stop.addEventListener("click", APP.stopPlay);
-
-    // previous and next buttons listeners
-    APP.previous.addEventListener("click", APP.perviousPlay);
-    APP.next.addEventListener("click", APP.nextPlay);
-
-    // back 10 seconds and forward 10 seconds buttons listeners
-    APP.back10.addEventListener("click", APP.backTenSec);
-    APP.forward10.addEventListener("click", APP.forwardTenSec);
 
     // automatically play to next track when current track is ended
     APP.audio.addEventListener("ended", APP.nextPlay);
@@ -32,6 +23,36 @@ const INIT = {
     INIT.songs.forEach((song) => {
       song.addEventListener("click", HIGHLIGHT.songSelected);
     });
+  },
+
+  buttonsSwitchListeners: (ev) => {
+    let target = ev.target.id;
+    console.log(target);
+    switch (target) {
+      case "btnPlay":
+        APP.startPlay();
+        break;
+      case "pause":
+        APP.pausePlay();
+        break;
+      case "stop":
+        APP.stopPlay();
+        break;
+      case "skip_previous":
+        APP.perviousPlay();
+        break;
+      case "skip_next":
+        APP.nextPlay();
+        break;
+      case "replay_10":
+        APP.backTenSec();
+        break;
+      case "forward_10":
+        APP.forwardTenSec();
+        break;
+      default:
+        console.log("buttons are not working!");
+    }
   },
 };
 
@@ -56,19 +77,19 @@ const APP = {
   currentTime: document.getElementById("current-time"),
 
   // play track
-  startPlay: (ev) => {
+  startPlay: () => {
     APP.audio.play();
     APP.updateToPause();
     ANIMATION.playAnimation();
   },
   // pause track
-  pausePlay: (ev) => {
+  pausePlay: () => {
     APP.audio.pause();
     APP.updateToPlay();
     ANIMATION.pauseAnimation();
   },
   // stop track
-  stopPlay: (ev) => {
+  stopPlay: () => {
     APP.audio.pause();
     APP.audio.currentTime = 0;
     APP.updateToPlay();
@@ -76,16 +97,16 @@ const APP = {
   },
 
   //current track's time back 10 seconds
-  backTenSec: (ev) => {
+  backTenSec: () => {
     APP.audio.currentTime = APP.audio.currentTime - 10;
   },
   //current track's time forward 10 seconds
-  forwardTenSec: (ev) => {
+  forwardTenSec: () => {
     APP.audio.currentTime = APP.audio.currentTime + 10;
   },
 
   // play next track
-  nextPlay: (ev) => {
+  nextPlay: () => {
     let len = SONGS.length;
     APP.currentTrack++;
     if (APP.currentTrack >= len) {
@@ -101,7 +122,7 @@ const APP = {
     APP.startPlay();
   },
   // play pervious track
-  perviousPlay: (ev) => {
+  perviousPlay: () => {
     if (APP.currentTrack === 0) {
       APP.currentTrack = 0;
     } else {
@@ -119,22 +140,13 @@ const APP = {
 
   // update to play button
   updateToPlay: () => {
-    let pause = document.getElementById("pause");
-    if (APP.audio.paused) {
-      APP.play.id = "btnPlay";
-      APP.play.innerHTML = "play_arrow";
-      APP.play.addEventListener("click", APP.startPlay);
-    } else {
-      pause.removeEventListener("click", APP.pausePlay);
-    }
+    APP.play.id = "btnPlay";
+    APP.play.innerHTML = "play_arrow";
   },
   // update to pause button
   updateToPause: () => {
-    APP.play.removeEventListener("click", APP.startPlay);
     APP.play.id = "pause";
     APP.play.innerHTML = "pause";
-    let pause = document.getElementById("pause");
-    pause.addEventListener("click", APP.pausePlay);
   },
 };
 
@@ -179,7 +191,7 @@ const PLAYLIST = {
 
 const PROGRESS = {
   // player progress bar
-  progressBar: (ev) => {
+  progressBar: () => {
     APP.progressBar.setAttribute("max", APP.audio.duration);
     APP.progressBar.setAttribute("value", APP.audio.currentTime);
   },
@@ -195,13 +207,13 @@ const TIME = {
     );
   },
   // update track's current time
-  updateCurrentTime: (ev) => {
+  updateCurrentTime: () => {
     APP.currentTime.innerHTML = TIME.covertTime(
       parseInt(APP.audio.currentTime)
     );
   },
   //update track's total time
-  updateTotalTime: (ev) => {
+  updateTotalTime: () => {
     APP.totalTime.innerHTML = TIME.covertTime(parseInt(APP.audio.duration));
   },
 };
@@ -235,7 +247,7 @@ const HIGHLIGHT = {
 
 const BUTTONHIGHLIGHT = {
   // hightLight the playlist song when press back/forward buttons
-  buttonSelected: (ev) => {
+  buttonSelected: () => {
     let currentTrack = SONGS[APP.currentTrack].title;
     let tracks = document.querySelectorAll(".songList-item");
     // remove the hightLight from previous song
@@ -251,7 +263,7 @@ const BUTTONHIGHLIGHT = {
 
 const ANIMATION = {
   // activated animation
-  playAnimation: (ev) => {
+  playAnimation: () => {
     for (let i = 1; i < 10; i++) {
       let visual = document.querySelector(`.r-${i}`);
       visual.id = `r-${i}`;
@@ -259,14 +271,14 @@ const ANIMATION = {
     }
   },
   // paused animation
-  pauseAnimation: (ev) => {
+  pauseAnimation: () => {
     for (let i = 1; i < 10; i++) {
       let visual = document.querySelector(`.r-${i}`);
       visual.style.animationPlayState = "paused";
     }
   },
   // deactivated animation
-  stopAnimation: (ev) => {
+  stopAnimation: () => {
     for (let i = 1; i < 10; i++) {
       let visual = document.querySelector(`.r-${i}`);
       visual.removeAttribute("id");
