@@ -220,7 +220,6 @@ const HIGHLIGHT = {
   // highlight the song that clicked from the playlist
   songSelected: (ev) => {
     let listItems = ev.target.closest(".songList-item");
-    console.log(listItems);
     INIT.songs.forEach((song) => {
       song.classList.remove("active");
     });
