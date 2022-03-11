@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <title>media player</title>
+    <title>Media Player</title>
 </head>
 
 <body>
@@ -16,123 +16,82 @@
     </header>
     <main>
         <section id="player-area">
-            <audio id="song-player" controls>
-                Your browser does not support the
-                <code>audio</code> element.
-            </audio>
             <div id="player" class="is-playing">
-                <div id="track-cover"> <img src="/media/img/TWICE-The Feels.jpeg" alt="track name" /></div>
-                <div id="visual">
-                    <p>The visualizer goes here</p>
+                <audio id="audio-player">
+                </audio>
+                <div>
+                    <div> <img id="track-cover" src="media/img/twice-the-feels.jpeg" alt="track name" /></div>
                 </div>
-                <div id="title">
-                    <p id="song-title">The Feels</p>
-                    <p id="artist">Twice</p>
-                </div>
-                <div id="timer">
-                    <input type="range" value="0" min="" max=""></input>
-                    <div id="time">
-                        <time id="current-time">00:00</time>
-                        <time id="total-time">03:18</time>
+                <div>
+                    <div id="track-visual">
+                        <div id="title">
+                            <p id="song-title">The Feels</p>
+                            <p id="artist">Twice</p>
+                        </div>
+                        <div id="visual">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 20"
+                                style="enable-background:new 0 0 45 20;" xml:space="preserve">
+                                <g>
+                                    <rect class="r-9" x="39.6" y="16.9" class="st0" width="4.4" height="3.2" />
+                                    <rect class="r-8" x="34.7" y="13.7" class="st0" width="4.4" height="6.5" />
+                                    <rect class="r-7" x="29.9" y="3.4" class="st0" width="4.4" height="16.7" />
+                                    <rect class="r-6" x="25.1" y="7.2" class="st0" width="4.4" height="13" />
+                                    <rect class="r-5" x="20.3" y="11" class="st0" width="4.4" height="9.2" />
+                                    <rect class="r-4" x="15.5" y="1.8" class="st0" width="4.4" height="18.4" />
+                                    <rect class="r-3" x="10.7" y="5.9" class="st0" width="4.4" height="14.3" />
+                                    <rect class="r-2" x="5.8" y="11.9" class="st0" width="4.4" height="8.3" />
+                                    <rect class="r-1" x="1" y="17.4" class="st0" width="4.4" height="2.7" />
+                                </g>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-                <div id="controls">
-                    <button id="skip_previous" class="buttons">
-                        <span class="material-icons">
-                            skip_previous
-                        </span>
-                    </button>
-                    <button id="replay_10" class="buttons">
-                        <span class="material-icons">
-                            replay_10
-                        </span>
-                    </button>
-                    <button id="btnPlay" class="buttons">
-                        <span class="material-icons">play_arrow</span>
-                    </button>
-                    <button id="pause" class="buttons">
-                        <span class="material-icons">
-                            pause
-                        </span>
-                    </button>
-                    <button id="stop" class="buttons">
-                        <span class="material-icons">
-                            stop
-                        </span>
-                    </button>
-                    <button id="forward_10" class="buttons">
-                        <span class="material-icons">
-                            forward_10
-                        </span>
-                    </button>
-                    <button id="skip_next" class="buttons">
-                        <span class="material-icons">
-                            skip_next
-                        </span>
-                    </button>
+                    <div id="timer">
+                        <progress id="progressBar" value="0" min="0" max="100"></progress>
+                        <div id="time">
+                            <time id="current-time">00:00</time>
+                            <time id="total-time">00:00</time>
+                        </div>
+                    </div>
+                    <div id="controls">
+                        <button class="buttons">
+                            <span id="skip_previous" class="material-icons md-40">
+                                skip_previous
+                            </span>
+                        </button>
+                        <button class="buttons">
+                            <span id="replay_10" class="material-icons md-40">
+                                replay_10
+                            </span>
+                        </button>
+                        <button class="buttons">
+                            <span id="btnPlay" class="material-icons md-40">play_arrow</span>
+                        </button>
+                        <button class="buttons">
+                            <span id="stop" class="material-icons md-40">
+                                stop
+                            </span>
+                        </button>
+                        <button class="buttons">
+                            <span id="forward_10" class="material-icons md-40">
+                                forward_10
+                            </span>
+                        </button>
+                        <button class="buttons">
+                            <span id="skip_next" class="material-icons md-40">
+                                skip_next
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
         <section id="playerList-area">
-            <p id="list-title">Playlist</p>
-            <ol id="songList">
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/ITZY-WANNABE.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">WANNABE</p>
-                        <p id="songList-artist">ITZY</p>
-                    </div>
-                </li>
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/LISA-MONEY.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">MONEY</p>
-                        <p id="songList-artist">LISA</p>
-                    </div>
-                </li>
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/BLACKPINK-DDU-DU DDU-DU.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">DDU-DU DDU-DU</p>
-                        <p id="songList-artist">BLACKPINK</p>
-                    </div>
-                </li>
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/IU-LILAC.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">LILAC</p>
-                        <p id="songList-artist">IU</p>
-                    </div>
-                </li>
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/BTS-Butter.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">Butter</p>
-                        <p id="songList-artist">BTS</p>
-                    </div>
-                </li>
-                <li class="active">
-                    <div id="songList-cover">
-                        <img src="/media/img/TWICE-The Feels.jpeg" alt="track name" />
-                    </div>
-                    <div id="songList-text">
-                        <p id="songList-title">The Feels</p>
-                        <p id="songList-artist">Twice</p>
-                    </div>
-                </li>
-            </ol>
+            <ol id="songList"></ol>
         </section>
     </main>
+    <script src="js/app.js" defer></script>
+    <script src="js/songs.js" defer></script>
 </body>
 
 </html>
