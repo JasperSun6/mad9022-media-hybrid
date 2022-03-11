@@ -121,10 +121,10 @@ const APP = {
   },
   // play pervious track
   perviousPlay: () => {
-    if (APP.currentTrack === 0) {
-      APP.currentTrack = 0;
-    } else {
-      APP.currentTrack--;
+    let len = SONGS.length;
+    APP.currentTrack--;
+    if (APP.currentTrack < 0) {
+      APP.currentTrack = len - 1;
     }
     APP.audio.src = SONGS[APP.currentTrack].src;
     document.getElementById("track-cover").src = SONGS[APP.currentTrack].img;
@@ -154,8 +154,6 @@ const PLAYLIST = {
     let list = document.getElementById("playerList-area");
     let df = document.createDocumentFragment();
     let listTitle = document.createElement("p");
-    listTitle.classList.add("list-title");
-    listTitle.innerHTML = "Playlist";
     let ol = document.createElement("ol");
     ol.setAttribute("id", "songList");
     SONGS.forEach((item, index) => {
