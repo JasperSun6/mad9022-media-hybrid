@@ -16,6 +16,10 @@ header {
   margin: 2rem 0;
 }
 
+.material-icons.md-40 {
+  font-size: 40px;
+}
+
 /* Mobile - 360px */
 #player-area {
   margin-left: 1.25rem;
