@@ -211,11 +211,13 @@ header {
     flex-direction: row;
   }
 
-  #player-area,
-  #playerList-area {
+  #player-area {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  #playerList-area {
     width: 100%;
   }
 
@@ -224,7 +226,7 @@ header {
   }
 
   #track-cover {
-    max-width: 50%;
+    max-width: 40%;
   }
 
   #visual svg {
@@ -233,12 +235,6 @@ header {
 
   #controls {
     margin-bottom: 0;
-  }
-
-  #songList {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
 
   /* list hover */
