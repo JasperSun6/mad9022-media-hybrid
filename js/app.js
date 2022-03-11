@@ -8,8 +8,6 @@ const INIT = {
     let buttons = document.getElementById("controls");
     buttons.addEventListener("click", INIT.buttonsSwitchListeners);
 
-    INIT.songs = document.querySelectorAll(".songList-item");
-
     APP.audio.src = SONGS[APP.currentTrack].src;
 
     // automatically play to next track when current track is ended
@@ -153,9 +151,7 @@ const PLAYLIST = {
   songList: () => {
     let list = document.getElementById("playerList-area");
     let df = document.createDocumentFragment();
-    let listTitle = document.createElement("p");
-    let ol = document.createElement("ol");
-    ol.setAttribute("id", "songList");
+    let ol = document.getElementById("songList");
     SONGS.forEach((item, index) => {
       let li = document.createElement("li");
       if (index === 0) {
@@ -180,7 +176,7 @@ const PLAYLIST = {
       li.append(cover, text);
       ol.append(li);
     });
-    df.append(listTitle, ol);
+    df.append(ol);
     list.append(df);
   },
 };
@@ -218,9 +214,11 @@ const HIGHLIGHT = {
   // highlight the song that clicked from the playlist
   songSelected: (ev) => {
     let listItems = ev.target.closest(".songList-item");
-    INIT.songs.forEach((song) => {
-      song.classList.remove("active");
-    });
+
+    document
+      .querySelectorAll("li.active")
+      .forEach((item) => item.classList.remove("active"));
+
     listItems.classList.add("active");
 
     let trackName = listItems.querySelector(".songList-title").textContent;
