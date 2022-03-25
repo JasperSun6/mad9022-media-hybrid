@@ -14,6 +14,8 @@ header {
   color: #ededec;
   font-family: "Mochiy Pop P One", sans-serif;
   margin: 2rem 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .material-icons.md-40 {

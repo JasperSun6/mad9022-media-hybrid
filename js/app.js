@@ -20,6 +20,9 @@ const INIT = {
     // when the track clicked, add highlight
     let songList = document.getElementById("songList");
     songList.addEventListener("click", HIGHLIGHT.songSelected);
+
+    let muted = document.getElementById("mute");
+    muted.addEventListener("click", APP.mute);
   },
 
   buttonsSwitchListeners: (ev) => {
@@ -143,6 +146,19 @@ const APP = {
   updateToPause: () => {
     APP.play.id = "pause";
     APP.play.innerHTML = "pause";
+  },
+
+  //mute/unmute media player
+  mute: () => {
+    let mute = APP.audio.muted;
+    let muteIcon = document.getElementById("mute");
+    if (mute === false) {
+      APP.audio.muted = true;
+      muteIcon.textContent = "volume_off";
+    } else {
+      APP.audio.muted = false;
+      muteIcon.textContent = "volume_up";
+    }
   },
 };
 
