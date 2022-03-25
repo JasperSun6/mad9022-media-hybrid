@@ -20,6 +20,10 @@ header {
   font-size: 40px;
 }
 
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
 /* Mobile - 360px */
 #player-area {
   margin-left: 1.25rem;
@@ -123,7 +127,8 @@ header {
   display: flex;
   justify-content: space-between;
   color: #ededec;
-  font-size: 0.75rem;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
   margin-top: 0.5rem;
 }
 
