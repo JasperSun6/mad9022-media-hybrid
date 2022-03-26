@@ -15,7 +15,8 @@ header {
   font-family: "Mochiy Pop P One", sans-serif;
   margin: 2rem 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .material-icons.md-40 {
@@ -213,6 +214,17 @@ header {
 
 /* Medium web browser - 600px */
 @media only screen and (min-width: 37.5rem) {
+  header {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  header,
+  #mute {
+    position: unset;
+  }
+
   main {
     display: flex;
     flex-direction: row;
